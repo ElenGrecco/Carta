@@ -6,31 +6,32 @@
 
 function sortear() {
     let nipes = ['♥', '♦', '♣', '♠']
-    let faces = ["A", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
+    let faces = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
 
-    //sorteio do índice do vetor
-    let nipeSorteada = nipes[Math.floor(Math.random() * 4)] // 0 1 2 3
-    let faceSorteada = faces[Math.floor(Math.random() * 13)] // 0 1 2 3 4 5 6 7 8 9 10 11 12
+    // Sorteio do índice do vetor (array) - sortear nipe
+    let nipeSorteado = nipes[Math.floor(Math.random() * 4)] // Sorteio do 0 - ♥, 1 - ♦, 2 - ♣ ou 3 - ♠
 
-    // console.log(`${faceSorteada} de ${nipeSorteada}`)
+    // Sorteio do índice do vetor (array) - sortear face
+    let faceSorteada = faces[Math.floor(Math.random() * 13)] // Sorteio do 0 (A) ao 13 (K)
 
-    //Determinar a cor com a base no nipe sorteado
+    // console.clear()
+    // console.log(`${faceSorteada} de ${nipeSorteado}`) // Exibir a face e nipe sorteados
+
+    // Determinar a cor com base no nipe sorteado
     let cor
-    if (nipeSorteada === '♥' || nipeSorteada === '♦') {
+    if (nipeSorteado === '♥' || nipeSorteado === '♦') {
         cor = '#ff0000'
     } else {
         cor = '#000'
     }
 
-
-    // rendenizar o canto superior esquerdo da carta
-    // a linha abaixo adiciona a div identificada como "subEsq" a face e o nipe sorteado e também tags <div> adicionais
-    document.getElementById('supEsq').innerHTML = `<div> ${faceSorteada}</div> <div> ${nipeSorteada}</div>`
-    //a linha abaixo muda o CSS referente a tag identificada
+    // Renderizar o canto superior esquerdo da carta
+    // A linha abaixo adiciona a div identificada como 'supEsq' a face e o nipe sorteado e também tags <div> adicionais
+    document.getElementById('supEsq').innerHTML = `<div>${faceSorteada}</div> <div>${nipeSorteado}</div>`
+    // A linha abaixo muda o CSS referente a tag identificada
     document.getElementById('supEsq').style.color = cor
 
-    //renderizar o centro da carta
-    // renderizar o centro da carta
+    // Renderizar o centro da carta
     let cc = document.getElementById('centroCarta')
     if (faceSorteada === 'J') {
         cc.innerHTML = `<img src="./img/valete.png">`
@@ -40,10 +41,13 @@ function sortear() {
         cc.innerHTML = `<img src="./img/rei.png">`
     } else {
         cc.innerHTML = `${nipeSorteado}`
-        cc.style.color = cor
+        // A linha abaixo muda o CSS referente a tag identificada
+        document.getElementById('centroCarta').style.color = cor
     }
 
-    // renderizar o canto inferior direito da carta
+    // Renderizar o canto inferior direito da carta
+    // A linha abaixo adiciona a div identificada como 'infDir' a face e o nipe sorteado e também tags <div> adicionais
     document.getElementById('infDir').innerHTML = `<div>${faceSorteada}</div> <div>${nipeSorteado}</div>`
+    // A linha abaixo muda o CSS referente a tag identificada
     document.getElementById('infDir').style.color = cor
 }
